@@ -1,0 +1,46 @@
+# Fake News Detection — Full Stack ML Web App
+
+## Goal
+Build a complete production-quality Fake News Detection web application using Flask + Scikit-learn + Vanilla JS.
+
+## Proposed Changes
+
+### Root Files
+#### [NEW] app.py — Flask backend with REST API
+#### [NEW] train_model.py — ML training pipeline
+#### [NEW] requirements.txt
+#### [NEW] README.md
+
+### ML Pipeline
+- Load Fake.csv + True.csv from dataset/
+- Clean and preprocess text (lowercase, strip HTML, punctuation removal, stopwords)
+- TF-IDF Vectorization (max 50k features)
+- Logistic Regression classifier
+- Save model + vectorizer to model/ via Joblib
+
+### Templates (Jinja2)
+- index.html — Landing page with hero, features, about, contact
+- dashboard.html — Charts (Chart.js), stats cards
+- history.html — Prediction history with search/delete
+- about.html — Team + tech info
+- contact.html — Contact form
+
+### Static Assets
+- static/css/style.css — Global design system (dark/light mode, glassmorphism)
+- static/js/main.js — Shared utilities (dark mode, animations)
+- static/js/detector.js — News detection logic
+- static/js/dashboard.js — Chart.js dashboard
+- static/js/history.js — History management
+
+### Backend API Routes
+- POST /api/predict — Run prediction
+- GET /api/history — Fetch all predictions
+- DELETE /api/history/<id> — Delete entry
+- GET /api/stats — Dashboard statistics
+
+## Verification Plan
+1. Install dependencies in venv
+2. Download/verify dataset files
+3. Train model
+4. Start Flask server
+5. Test all pages and API endpoints

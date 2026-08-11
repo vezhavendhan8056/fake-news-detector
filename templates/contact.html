@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Contact TruthLens — Send us feedback or suggestions about our AI-powered information verification platform."/>
+  <title>Contact — TruthLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>"/>
+  <style>
+    /* Custom FAQ accordion styles */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .faq-item {
+      background: var(--glass-2);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      cursor: pointer;
+      transition: border-color var(--t-base) var(--ease), background var(--t-base) var(--ease);
+    }
+    .faq-item:hover {
+      border-color: var(--border-accent);
+      background: var(--glass-3);
+    }
+    .faq-item summary {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      list-style: none;
+      outline: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .faq-item summary::-webkit-details-marker {
+      display: none;
+    }
+    .faq-item summary::before {
+      content: '▶';
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      transition: transform 0.24s var(--ease);
+    }
+    .faq-item[open] summary::before {
+      transform: rotate(90deg);
+      color: var(--text-accent);
+    }
+    .faq-content {
+      margin-top: 12px;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+      line-height: 1.75;
+      padding-left: 18px;
+      border-left: 2px solid var(--border-subtle);
+    }
+    
+    /* Styled Select Option custom overrides */
+    .tl-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='none' stroke='%239B8EC4' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M2 4l4 4 4-4'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 16px center;
+      padding-right: 40px;
+    }
+    .tl-select option {
+      background: var(--bg-surface);
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+
+<div class="page-bg">
+  <div class="bg-orb-1"></div>
+  <div class="bg-orb-2"></div>
+  <div class="bg-orb-3"></div>
+</div>
+<div class="page-bg-noise"></div>
+
+<!-- Navbar -->
+<nav class="tl-nav" role="navigation">
+  <div class="tl-nav-inner">
+    <a href="/" class="tl-brand">
+      <div class="tl-brand-mark">🔮</div>
+      <span class="tl-brand-name">Truth<span>Lens</span></span>
+    </a>
+    <div class="tl-nav-links" id="navLinks">
+      <a href="/">Home</a>
+      <a href="/#detectorSection">Detect</a>
+      <a href="/dashboard">Dashboard</a>
+      <a href="/history">History</a>
+      <a href="/about">About</a>
+      <a href="/contact" class="active">Contact</a>
+    </div>
+    <div class="tl-nav-actions">
+      <button class="tl-theme-btn" id="themeToggleBtn" aria-label="Toggle theme">🌙</button>
+      <button class="tl-ham" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</nav>
+<div class="tl-mobile-nav" id="mobileNav">
+  <a href="/">Home</a><a href="/#detectorSection">Detect</a><a href="/dashboard">Dashboard</a><a href="/history">History</a><a href="/about">About</a><a href="/contact" class="active">Contact</a>
+</div>
+
+<!-- Page Header -->
+<div class="page-header-tl">
+  <div class="container" style="position:relative;z-index:1;text-align:center;">
+    <div class="section-label" style="display:inline-flex;margin-bottom:16px;">
+      <div class="section-label-dot"></div>
+      <span class="label-sm">Get In Touch</span>
+    </div>
+    <h1 class="display-lg">Let's <span class="gradient-text">Connect.</span></h1>
+    <p class="subheading" style="margin-top:12px;">Questions, feedback, or suggestions about TruthLens? We'd love to hear from you.</p>
+  </div>
+</div>
+
+<!-- Main Section -->
+<main style="padding:60px 0 80px;">
+  <div class="container">
+    
+    <div class="contact-layout-grid" style="max-width:1040px;margin:0 auto;">
+      
+      <!-- Left side info cards -->
+      <div class="anim-in">
+        <div class="section-label" style="margin-bottom:16px;">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">Contact Info</span>
+        </div>
+        <h2 class="heading" style="margin-bottom:12px;font-size:1.5rem;">Contact Information</h2>
+        <p style="color:var(--text-secondary);line-height:1.8;margin-bottom:32px;font-size:0.9375rem;">
+          This project was developed as part of a B.Sc. Information Technology and Cybersecurity mini project. We welcome any questions, suggestions, or feedback regarding the Fake News Detection system.
+        </p>
+
+        <div style="display:flex;flex-direction:column;gap:14px;">
+          <!-- Card: Email -->
+          <div style="display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--glass-2);border:1px solid var(--border-default);border-radius:var(--radius-md);transition:border-color var(--t-fast) var(--ease);" class="glass-hover-border">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(124,58,237,0.15);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">📧</div>
+            <div>
+              <div class="label-xs" style="margin-bottom:3px;font-size:0.65rem;">Email</div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--text-primary);word-break:break-all;">vezhavendhanscsitcs24spiher@gmail.com</div>
+            </div>
+          </div>
+
+          <!-- Card: Department -->
+          <div style="display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--glass-2);border:1px solid var(--border-default);border-radius:var(--radius-md);" class="glass-hover-border">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(168,85,247,0.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">🎓</div>
+            <div>
+              <div class="label-xs" style="margin-bottom:3px;font-size:0.65rem;">Department</div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">B.Sc. Information Technology and Cybersecurity</div>
+            </div>
+          </div>
+
+          <!-- Card: GitHub -->
+          <div style="display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--glass-2);border:1px solid var(--border-default);border-radius:var(--radius-md);" class="glass-hover-border">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(236,72,153,0.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">💻</div>
+            <div>
+              <div class="label-xs" style="margin-bottom:3px;font-size:0.65rem;">GitHub</div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--text-primary);word-break:break-all;">
+                <a href="https://github.com/vezhavendhan8056" target="_blank" style="text-decoration:underline;color:var(--violet-mid);transition:color var(--t-fast) var(--ease);">github.com/vezhavendhan8056</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card: Location -->
+          <div style="display:flex;align-items:center;gap:16px;padding:18px 20px;background:var(--glass-2);border:1px solid var(--border-default);border-radius:var(--radius-md);" class="glass-hover-border">
+            <div style="width:42px;height:42px;border-radius:10px;background:rgba(6,182,212,0.12);display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;">📍</div>
+            <div>
+              <div class="label-xs" style="margin-bottom:3px;font-size:0.65rem;">Location</div>
+              <div style="font-weight:600;font-size:0.9rem;color:var(--text-primary);">India 🇮🇳</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right side message form -->
+      <div class="glass-card anim-in">
+        <div class="section-label" style="margin-bottom:16px;">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">Message</span>
+        </div>
+        <h2 class="heading" style="margin-bottom:20px;font-size:1.5rem;">Send a Message</h2>
+
+        <form id="contactForm" novalidate style="display:flex;flex-direction:column;gap:16px;">
+          
+          <div class="form-row-grid">
+            <div class="tl-form-group">
+              <label class="tl-label" for="contactName">Full Name *</label>
+              <input type="text" id="contactName" class="tl-input" placeholder="vezhavendhan" required />
+            </div>
+            
+            <div class="tl-form-group">
+              <label class="tl-label" for="contactEmail">Email Address *</label>
+              <input type="email" id="contactEmail" class="tl-input" placeholder="vezhavendhanscsitcs24spiher@gmail.com" required />
+            </div>
+          </div>
+
+          <div class="tl-form-group">
+            <label class="tl-label" for="contactSubject">Subject *</label>
+            <input type="text" id="contactSubject" class="tl-input" placeholder="Feedback / Question / Bug Report" required />
+          </div>
+
+          <div class="tl-form-group">
+            <label class="tl-label" for="contactMessage">Message *</label>
+            <textarea id="contactMessage" class="tl-input" rows="4" style="resize:vertical;" placeholder="Tell us about your experience, suggestions, or report a bug…" required></textarea>
+          </div>
+
+          <div class="tl-form-group">
+            <label class="tl-label" for="contactType">Message Type</label>
+            <select id="contactType" class="tl-input tl-select">
+              <option value="feedback">💬 General Feedback</option>
+              <option value="bug">🐛 Bug Report</option>
+              <option value="suggestion">💡 Feature Suggestion</option>
+              <option value="question">❓ Question</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;margin-top:10px;padding:14px 28px;">
+            📨 Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- FAQ Accordions -->
+    <div style="margin-top:64px;max-width:1040px;margin-left:auto;margin-right:auto;" class="anim-in">
+      <div style="text-align:left;margin-bottom:28px;">
+        <div class="section-label">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">FAQ</span>
+        </div>
+        <h2 class="display-md" style="margin-top:8px;">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="faq-list">
+        <!-- FAQ 1 -->
+        <details class="faq-item">
+          <summary>How accurate is the fake news detector?</summary>
+          <div class="faq-content">
+            Our hybrid framework yields approximately 66.67% accuracy across our test suite. It achieves this by combining vocabulary features parsed through a Logistic Regression style model (35% weight) with real-time web source agreement (65% weight) evaluated through live searches.
+          </div>
+        </details>
+
+        <!-- FAQ 2 -->
+        <details class="faq-item">
+          <summary>What languages does it support?</summary>
+          <div class="faq-content">
+            The current implementation is designed for English-language claims, as the stopword filtration algorithms and underlying vectorization models were trained on English political publications.
+          </div>
+        </details>
+
+        <!-- FAQ 3 -->
+        <details class="faq-item">
+          <summary>How long should the article or claim be?</summary>
+          <div class="faq-content">
+            For search keyword extraction to formulate precise queries, claims of 10 to 50 words perform best. Full-length articles can also be analysed since the system automatically selects key nouns and subject indicators.
+          </div>
+        </details>
+
+        <!-- FAQ 4 -->
+        <details class="faq-item">
+          <summary>Is my data stored or shared?</summary>
+          <div class="faq-content">
+            All verification history is stored locally in standard JSON files on the server for the history feature. No data is shared with third parties. This is a local application for educational purposes.
+          </div>
+        </details>
+
+        <!-- FAQ 5 -->
+        <details class="faq-item">
+          <summary>Can I use this for my own project?</summary>
+          <div class="faq-content">
+            Yes! This platform is open-source. You are welcome to adapt, modify, or extend the source code for your academic portfolios.
+          </div>
+        </details>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- Footer -->
+<footer class="tl-footer" role="contentinfo">
+  <div class="container">
+    <div class="tl-footer-bottom">
+      <span>© 2024 TruthLens — B.Sc. Information Technology and Cybersecurity</span>
+      <span>Built with machine learning &amp; precision</span>
+    </div>
+  </div>
+</footer>
+
+<div class="tl-toast-wrap" id="toastContainer" aria-live="assertive"></div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+<script>
+  // Message handler displaying beautiful system toasts
+  document.getElementById('contactForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const name = document.getElementById('contactName').value.trim();
+    const email = document.getElementById('contactEmail').value.trim();
+    const subject = document.getElementById('contactSubject').value.trim();
+    const message = document.getElementById('contactMessage').value.trim();
+
+    if (!name || !email || !subject || !message) {
+      Toast.show('Please fill in all required fields.', 'error');
+      return;
+    }
+
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      Toast.show('Please enter a valid email address.', 'error');
+      return;
+    }
+
+    const btn = this.querySelector('button[type="submit"]');
+    btn.disabled = true;
+    btn.innerHTML = '⏳ Sending…';
+
+    setTimeout(() => {
+      Toast.show(`Thank you, ${name}! Your message has been received.`, 'success', 5000);
+      this.reset();
+      btn.disabled = false;
+      btn.innerHTML = '📨 Send Message';
+    }, 1200);
+  });
+</script>
+</body>
+</html>

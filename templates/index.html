@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="TruthLens — AI-powered information verification. Detect fake news and misleading content instantly using machine learning and NLP." />
+  <meta name="keywords" content="fake news detector, information verification, AI, NLP, machine learning, TruthLens" />
+  <title>TruthLens — Verify What You Read</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>" />
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="page-bg">
+    <div class="bg-orb-1"></div>
+    <div class="bg-orb-2"></div>
+    <div class="bg-orb-3"></div>
+  </div>
+  <div class="page-bg-noise"></div>
+
+  <!-- ════════════════ NAVBAR ════════════════ -->
+  <nav class="tl-nav" role="navigation" aria-label="Main navigation">
+    <div class="tl-nav-inner">
+      <a href="/" class="tl-brand" aria-label="TruthLens home">
+        <div class="tl-brand-mark" aria-hidden="true">🔮</div>
+        <span class="tl-brand-name">Truth<span>Lens</span></span>
+      </a>
+
+      <div class="tl-nav-links" id="navLinks" role="menubar">
+        <a href="/" class="active" role="menuitem">Home</a>
+        <a href="/#detectorSection" role="menuitem">Detect</a>
+        <a href="/dashboard" role="menuitem">Dashboard</a>
+        <a href="/history" role="menuitem">History</a>
+        <a href="/about" role="menuitem">About</a>
+      </div>
+
+      <div class="tl-nav-actions">
+        <button class="tl-theme-btn" id="themeToggleBtn" aria-label="Toggle light/dark mode" title="Toggle theme">
+          🌙
+        </button>
+        <button class="tl-ham" id="mobileMenuBtn" aria-label="Open menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Nav -->
+  <div class="tl-mobile-nav" id="mobileNav" role="menu">
+    <a href="/" class="active">Home</a>
+    <a href="/#detectorSection">Detect</a>
+    <a href="/dashboard">Dashboard</a>
+    <a href="/history">History</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+  </div>
+
+  <!-- ════════════════ HERO ════════════════ -->
+  <section class="hero" aria-label="Hero">
+    <div class="hero-grid-bg" aria-hidden="true"></div>
+    <div class="container">
+      <div class="hero-layout">
+
+        <!-- Left -->
+        <div class="hero-left">
+          <div class="hero-eyebrow">
+            <span class="hero-eyebrow-dot" aria-hidden="true"></span>
+            <span class="label-sm">AI-Powered Information Verification</span>
+          </div>
+
+          <h1 class="display-giant hero-title">
+            VERIFY<br />
+            <span class="gradient-text">WHAT</span><br />
+            YOU READ.
+          </h1>
+
+          <p class="hero-subtitle">
+            Use machine learning and natural language processing to evaluate news and articles, helping identify
+            potentially misleading content before you trust or share it.
+
+          </p>
+
+          <div class="hero-cta">
+            <a href="#detectorSection" class="btn btn-primary btn-lg">
+              Start Detection
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a href="/dashboard" class="btn btn-secondary btn-lg">Explore Platform</a>
+          </div>
+
+          <div class="hero-stats" aria-label="Platform statistics">
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">98%+</div>
+              <div class="hero-stat-label">Detection Accuracy</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">40K+</div>
+              <div class="hero-stat-label">Articles Trained</div>
+            </div>
+            <div class="hero-stat-item">
+              <div class="hero-stat-num">&lt;50ms</div>
+              <div class="hero-stat-label">Analysis Speed</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right — Floating Analysis Card -->
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-orb"></div>
+          <div class="hero-card">
+            <div class="hero-card-header">
+              <span class="hero-card-brand">TruthLens Analysis</span>
+              <span class="hero-card-badge">● Live</span>
+            </div>
+
+            <div class="hero-card-title">Article Verification</div>
+
+            <div class="scan-bar"></div>
+
+            <div style="margin-bottom:18px;">
+              <div class="preview-label" style="margin-bottom:4px;">Verdict</div>
+              <div class="hero-result-label">LIKELY TRUE</div>
+              <div class="hero-confidence">Confidence score: 96.4%</div>
+
+              <div
+                style="display:flex;justify-content:space-between;font-size:0.7rem;color:var(--text-muted);margin-bottom:4px;">
+                <span>Confidence</span><span style="color:var(--text-accent);">96.4%</span>
+              </div>
+              <div class="confidence-track">
+                <div class="confidence-fill" style="width:96.4%"></div>
+              </div>
+            </div>
+
+            <div class="hero-card-checks">
+              <div class="hero-check-item">
+                <span>NLP Analysis</span>
+                <div class="hero-check-icon">✓</div>
+              </div>
+              <div class="hero-check-item">
+                <span>Pattern Recognition</span>
+                <div class="hero-check-icon">✓</div>
+              </div>
+              <div class="hero-check-item">
+                <span>Source Signals</span>
+                <div class="hero-check-icon">✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════ STATS BAND ════════════════ -->
+  <div class="stats-glass-band anim-in">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-cell">
+          <div class="stat-big-num">40K+</div>
+          <div class="stat-cell-label">Articles in Training Set</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big-num">98%</div>
+          <div class="stat-cell-label">Detection Accuracy</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big-num">&lt;50ms</div>
+          <div class="stat-cell-label">Average Processing Time</div>
+        </div>
+        <div class="stat-cell">
+          <div class="stat-big-num">50K</div>
+          <div class="stat-cell-label">TF-IDF Features</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ════════════════ DETECT SECTION ════════════════ -->
+  <section class="section" id="detectorSection" aria-label="Article analyser">
+    <div class="container">
+      <div style="margin-bottom:48px;" class="anim-in">
+        <div class="section-label">
+          <div class="section-label-dot" aria-hidden="true"></div>
+          <span class="label-sm">Detection Engine</span>
+        </div>
+        <h2 class="display-lg" style="margin-bottom:16px;">Analyse the Story.</h2>
+        <p class="subheading">
+          Paste an article and let TruthLens check its credibility.
+
+        </p>
+      </div>
+
+      <div class="detect-workspace anim-in">
+        <!-- Input Panel -->
+        <div class="input-panel">
+          <!-- Samples -->
+          <div style="margin-bottom:14px;">
+            <div class="label-xs" style="margin-bottom:8px;">Quick samples</div>
+            <div class="sample-pills">
+              <button class="sample-pill" data-sample="real" aria-label="Load real news sample">📰 Real Article</button>
+              <button class="sample-pill" data-sample="fake" aria-label="Load fake news sample">⚠️ Misleading</button>
+              <button class="sample-pill" data-sample="mixed" aria-label="Load mixed content sample">🔍 Mixed</button>
+            </div>
+          </div>
+
+          <label for="newsTextarea" class="label-xs" style="display:block;margin-bottom:8px;">Article Content</label>
+          <textarea id="newsTextarea" class="tl-textarea"
+            placeholder="Paste the article or news content here…&#10;&#10;TruthLens will analyse language patterns, structure and signals to evaluate credibility. Longer articles produce more accurate results.&#10;&#10;Press Ctrl+Enter to run analysis."
+            rows="9" aria-label="Article text for analysis" aria-describedby="detectHint"></textarea>
+
+          <div class="detect-meta" id="detectHint" aria-live="polite">
+            <span class="detect-meta-item">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2" />
+                <path d="M6 4v3M6 8.5v.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" />
+              </svg>
+              <span id="charCount">0</span> characters
+            </span>
+            <span class="detect-meta-item">
+              <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+                <rect x="1" y="2" width="10" height="1.5" rx=".75" fill="currentColor" />
+                <rect x="1" y="5.25" width="7" height="1.5" rx=".75" fill="currentColor" />
+                <rect x="1" y="8.5" width="9" height="1.5" rx=".75" fill="currentColor" />
+              </svg>
+              <span id="wordCount">0</span> words
+            </span>
+            <span class="detect-meta-item">~<span id="readingTime">0</span> min read</span>
+            <span style="margin-left:auto;opacity:0.5;">Ctrl+Enter to analyse</span>
+          </div>
+
+          <div class="detect-actions">
+            <button id="checkNewsBtn" class="btn btn-primary" style="flex:1;"
+              aria-label="Analyse article for misinformation">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.8" />
+                <path d="M11 11l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+              </svg>
+              Analyse Article
+            </button>
+            <button id="clearBtn" class="btn btn-ghost" aria-label="Clear article text">Clear</button>
+          </div>
+        </div>
+
+        <!-- Preview / Result Panel -->
+        <div class="preview-panel" id="previewPanel">
+          <!-- Default state -->
+          <div id="previewDefault">
+            <div class="label-xs" style="margin-bottom:16px;">Analysis Preview</div>
+
+            <div class="preview-label">Prediction</div>
+            <div class="preview-status-badge idle" style="margin-bottom:16px;" id="previewVerdict" aria-live="polite">
+              Awaiting Input
+            </div>
+
+            <div class="preview-label">Confidence</div>
+            <div class="preview-conf-num idle" id="previewConf" aria-live="polite">—</div>
+
+            <div class="confidence-track" style="margin:14px 0 22px;">
+              <div class="confidence-fill" id="previewConfBar" style="width:0%"></div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:12px;margin-top:8px;">
+              <div style="display:flex;justify-content:space-between;font-size:0.8125rem;">
+                <span style="color:var(--text-muted);">Analysis Status</span>
+                <span style="color:var(--text-secondary);" id="previewStatus">Ready</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.8125rem;">
+                <span style="color:var(--text-muted);">Model</span>
+                <span style="color:var(--text-secondary);">NLP Classification</span>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:0.8125rem;">
+                <span style="color:var(--text-muted);">Analysis Time</span>
+                <span style="color:var(--text-secondary);" id="previewTime">—</span>
+              </div>
+            </div>
+
+            <div class="tl-divider"></div>
+            <p style="font-size:0.8rem;color:var(--text-muted);line-height:1.65;">
+              TruthLens uses TF-IDF vectorisation and Logistic Regression trained on 40,000+ verified articles.
+            </p>
+          </div>
+
+          <!-- Loading -->
+          <div id="loadingSection" class="hidden">
+            <div class="tl-loading">
+              <div class="tl-spinner" role="status" aria-label="Analysing article"></div>
+              <div style="text-align:center;">
+                <div style="font-size:0.875rem;color:var(--text-secondary);">Analysing patterns…</div>
+                <div class="label-xs" style="margin-top:4px;">NLP · TF-IDF · Classification</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full-width Result -->
+      <div id="resultSection" class="hidden" aria-live="polite" aria-label="Analysis result"></div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════ FEATURES ════════════════ -->
+  <section class="section"
+    style="background:var(--glass-1);border-top:1px solid var(--border-subtle);border-bottom:1px solid var(--border-subtle);"
+    aria-label="Platform features">
+    <div class="container">
+      <div class="text-center anim-in" style="margin-bottom:56px;">
+        <div class="section-label" style="display:inline-flex;">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">Capabilities</span>
+        </div>
+        <h2 class="display-lg" style="margin-top:16px;margin-bottom:16px;">Intelligence Behind<br />Every Result.</h2>
+        <p class="subheading" style="max-width:500px;margin:0 auto;">
+          Built on a robust NLP pipeline designed for precision in misinformation detection.
+        </p>
+      </div>
+
+      <div class="features-grid-tl">
+        <div class="feature-card-tl anim-in">
+          <span class="feature-num">01</span>
+          <div class="feature-icon-tl" aria-hidden="true">🧠</div>
+          <h3>NLP Analysis</h3>
+          <p>Advanced natural language processing extracts linguistic features, detects emotional language, and
+            evaluates writing patterns characteristic of misleading content.</p>
+        </div>
+        <div class="feature-card-tl anim-in">
+          <span class="feature-num">02</span>
+          <div class="feature-icon-tl" aria-hidden="true">⚡</div>
+          <h3>Machine Learning Detection</h3>
+          <p>Logistic Regression classifier trained on over 40,000 real and fake articles using TF-IDF vectorisation
+            with unigram and bigram features for high accuracy.</p>
+        </div>
+        <div class="feature-card-tl anim-in">
+          <span class="feature-num">03</span>
+          <div class="feature-icon-tl" aria-hidden="true">📊</div>
+          <h3>Confidence Scoring</h3>
+          <p>Every prediction comes with a detailed probability breakdown showing fake and real confidence percentages,
+            helping you understand the strength of each verdict.</p>
+        </div>
+        <div class="feature-card-tl anim-in">
+          <span class="feature-num">04</span>
+          <div class="feature-icon-tl" aria-hidden="true">🕒</div>
+          <h3>Analysis History</h3>
+          <p>All analyses are automatically saved. Search, filter, export, and review your prediction history anytime
+            with full metadata and detailed result records.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════ HOW IT WORKS ════════════════ -->
+  <section class="section" aria-label="How TruthLens works">
+    <div class="container">
+      <div class="text-center anim-in" style="margin-bottom:64px;">
+        <div class="section-label" style="display:inline-flex;">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">Process</span>
+        </div>
+        <h2 class="display-lg" style="margin-top:16px;">From Story to Signal.</h2>
+      </div>
+
+      <div class="steps-row anim-in">
+        <div class="step-cell">
+          <div class="step-circle" aria-hidden="true">01</div>
+          <h3>Paste</h3>
+          <p>Copy and paste the article or news content into the detection workspace.</p>
+        </div>
+        <div class="step-cell">
+          <div class="step-circle" aria-hidden="true">02</div>
+          <h3>Analyse</h3>
+          <p>TruthLens preprocesses the text and runs the NLP classification model.</p>
+        </div>
+        <div class="step-cell">
+          <div class="step-circle" aria-hidden="true">03</div>
+          <h3>Verify</h3>
+          <p>Review the verdict, confidence score, and AI-generated explanation.</p>
+        </div>
+        <div class="step-cell">
+          <div class="step-circle" aria-hidden="true">04</div>
+          <h3>Decide</h3>
+          <p>Make an informed decision about the content you're reading or sharing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ════════════════ CTA ════════════════ -->
+  <section class="section-sm" aria-label="Call to action">
+    <div class="container">
+      <div class="anim-in"
+        style="background:var(--glass-2);backdrop-filter:blur(24px);border:1px solid var(--border-default);border-radius:var(--radius-xl);padding:64px 48px;text-align:center;position:relative;overflow:hidden;">
+        <div
+          style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:400px;height:300px;background:radial-gradient(ellipse,rgba(124,58,237,0.18),transparent 70%);pointer-events:none;"
+          aria-hidden="true"></div>
+        <div style="position:relative;z-index:1;">
+          <div class="section-label" style="display:inline-flex;margin-bottom:20px;">
+            <div class="section-label-dot"></div>
+            <span class="label-sm"> B.Sc. Information Technology and Cybersecurity </span>
+          </div>
+          <h2 class="display-md" style="margin-bottom:16px;">Ready to fight<br /><span
+              class="gradient-text">misinformation?</span></h2>
+          <p class="subheading" style="max-width:440px;margin:0 auto 36px;">
+            Start detecting fake news instantly. No account required. Powered by machine learning💪.
+          </p>
+          <div style="display:flex;gap:14px;justify-content:center;flex-wrap:wrap;">
+            <a href="#detectorSection" class="btn btn-primary btn-lg">
+              Start Detection
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M3 8H13M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                  stroke-linejoin="round" />
+              </svg>
+            </a>
+            <a href="/dashboard" class="btn btn-secondary btn-lg">View Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <div class="tl-footer-col">
+
+    </ul>
+  </div>
+  </div>
+  <div class="tl-footer-bottom">
+    <span>© 2024 TruthLens — B.Sc. Information Technology and Cybersecurity Project</span>
+    <span>Built with machine learning &amp; precision</span>
+  </div>
+  </div>
+  </footer>
+
+  <!-- Toast container -->
+  <div class="tl-toast-wrap" id="toastContainer" aria-live="assertive"></div>
+
+  <!-- Scripts -->
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/detector.js') }}"></script>
+</body>
+
+</html>

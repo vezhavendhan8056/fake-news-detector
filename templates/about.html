@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="About TruthLens — AI-powered fake news detection using machine learning and NLP. B.Sc. Computer Science project." />
+  <title>About — TruthLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>" />
+</head>
+
+<body>
+
+  <div class="page-bg">
+    <div class="bg-orb-1"></div>
+    <div class="bg-orb-2"></div>
+    <div class="bg-orb-3"></div>
+  </div>
+  <div class="page-bg-noise"></div>
+
+  <!-- Navbar -->
+  <nav class="tl-nav" role="navigation">
+    <div class="tl-nav-inner">
+      <a href="/" class="tl-brand">
+        <div class="tl-brand-mark">🔮</div>
+        <span class="tl-brand-name">Truth<span>Lens</span></span>
+      </a>
+      <div class="tl-nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/#detectorSection">Detect</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/history">History</a>
+        <a href="/about" class="active">About</a>
+      </div>
+      <div class="tl-nav-actions">
+        <button class="tl-theme-btn" id="themeToggleBtn" aria-label="Toggle theme">🌙</button>
+        <button class="tl-ham" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="tl-mobile-nav" id="mobileNav">
+    <a href="/">Home</a><a href="/#detectorSection">Detect</a><a href="/dashboard">Dashboard</a><a
+      href="/history">History</a><a href="/about" class="active">About</a><a href="/contact">Contact</a>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header-tl">
+    <div class="container" style="position:relative;z-index:1;text-align:center;">
+      <div class="section-label" style="display:inline-flex;margin-bottom:16px;">
+        <div class="section-label-dot"></div>
+        <span class="label-sm">About the Project</span>
+      </div>
+      <h1 class="display-lg">Making Information<br /><span class="gradient-text">Easier to Verify.</span></h1>
+      <p class="subheading" style="margin-top:16px;max-width:560px;margin-left:auto;margin-right:auto;">
+        TruthLens is an AI-powered fake news detection system built as a B.Sc. Information Technology and Cybersecurity
+        using machine learning and natural language processing.
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <main style="padding:60px 0 80px;">
+    <div class="container-narrow" style="max-width:860px;">
+
+      <!-- Mission -->
+      <div class="glass-card anim-in" style="margin-bottom:20px;">
+        <div class="section-label" style="margin-bottom:16px;">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">Mission</span>
+        </div>
+        <h2 class="display-md" style="margin-bottom:16px;">Why This Matters</h2>
+        <p style="color:var(--text-secondary);line-height:1.85;margin-bottom:14px;">
+          The rapid growth of digital media has made the spread of misinformation a growing concern. Fake news,
+          manipulated narratives, and misleading information can shape public opinion, influence elections, and pose
+          serious risks to society. TruthLens was developed to offer an accessible and practical solution for assessing
+          the credibility of news content.
+
+        </p>
+        <p style="color:var(--text-secondary);line-height:1.85;">
+          TruthLens employs machine learning techniques trained on thousands of verified authentic and fabricated news
+          articles to detect linguistic patterns commonly associated with misleading information. By analyzing these
+          patterns, the system assists users in assessing news credibility and making informed decisions before reading
+          or sharing content.
+
+        </p>
+      </div>
+
+      <!-- How it Works -->
+      <div class="glass-card anim-in" style="margin-bottom:20px;">
+        <div class="section-label" style="margin-bottom:16px;">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">Technology</span>
+        </div>
+        <h2 class="display-md" style="margin-bottom:20px;">How Machine Learning Detects Fake News</h2>
+
+        <div style="display:flex;flex-direction:column;gap:16px;">
+          <div
+            style="display:flex;gap:16px;padding:18px;background:var(--glass-2);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+            <div
+              style="width:44px;height:44px;border-radius:10px;background:rgba(124,58,237,0.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">
+              🔤</div>
+            <div>
+              <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:6px;">Text
+                Preprocessing</h3>
+              <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Raw article text is cleaned by
+                removing URLs, HTML tags, special characters, and English stop words. Words are then stemmed to their
+                root forms to reduce dimensionality and improve model generalisation.</p>
+            </div>
+          </div>
+
+          <div
+            style="display:flex;gap:16px;padding:18px;background:var(--glass-2);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+            <div
+              style="width:44px;height:44px;border-radius:10px;background:rgba(168,85,247,0.15);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">
+              📊</div>
+            <div>
+              <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:6px;">TF-IDF
+                Vectorisation</h3>
+              <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">Term Frequency–Inverse Document
+                Frequency transforms text into numerical feature vectors. With 50,000 features using both unigrams and
+                bigrams, the model captures word importance and contextual phrases that distinguish real from fake
+                content.</p>
+            </div>
+          </div>
+
+          <div
+            style="display:flex;gap:16px;padding:18px;background:var(--glass-2);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+            <div
+              style="width:44px;height:44px;border-radius:10px;background:rgba(236,72,153,0.12);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">
+              🤖</div>
+            <div>
+              <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:6px;">Logistic
+                Regression Classifier</h3>
+              <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">A Logistic Regression
+                classifier is trained on an 80/20 split of the dataset. This model outputs probability scores for both
+                classes (Real/Fake), allowing TruthLens to provide not just a verdict but a quantified confidence level
+                for every prediction.</p>
+            </div>
+          </div>
+
+          <div
+            style="display:flex;gap:16px;padding:18px;background:var(--glass-2);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+            <div
+              style="width:44px;height:44px;border-radius:10px;background:rgba(16,185,129,0.12);display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">
+              💾</div>
+            <div>
+              <h3 style="font-family:var(--font-display);font-size:1rem;font-weight:700;margin-bottom:6px;">Model
+                Persistence</h3>
+              <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">The trained model and TF-IDF
+                vectorizer are serialised using Joblib, allowing them to be loaded once at server startup and reused for
+                every prediction without retraining. The Flask REST API handles all prediction requests.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+
+      <!-- Dataset -->
+      <div class="glass-card anim-in" style="margin-bottom:20px;">
+        <div class="section-label" style="margin-bottom:16px;">
+          <div class="section-label-dot"></div>
+          <span class="label-sm">Dataset</span>
+        </div>
+        <h2 class="display-md" style="margin-bottom:12px;">Training Data</h2>
+        <p style="color:var(--text-secondary);line-height:1.85;margin-bottom:16px;">
+          TruthLens is trained on the Kaggle Fake and Real News Dataset, which contains over 40,000 political news
+          articles classified as either genuine or fabricated. The dataset consists of approximately 21,000 fake news
+          articles and 21,000 real news articles published between 2016 and 2017.
+        </p>
+
+        <div class="about-stats-grid">
+          <div
+            style="text-align:center;padding:16px;background:var(--glass-2);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+            <div
+              style="font-family:var(--font-display);font-size:1.75rem;font-weight:900;background:var(--grad-brand);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">
+              40K+</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">Total Articles</div>
+          </div>
+          <div
+            style="text-align:center;padding:16px;background:var(--glass-2);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+            <div style="font-family:var(--font-display);font-size:1.75rem;font-weight:900;color:#F87171;">~21K</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">Fake Articles</div>
+          </div>
+          <div
+            style="text-align:center;padding:16px;background:var(--glass-2);border:1px solid var(--border-subtle);border-radius:var(--radius-md);">
+            <div style="font-family:var(--font-display);font-size:1.75rem;font-weight:900;color:#34D399;">~21K</div>
+            <div style="font-size:0.78rem;color:var(--text-muted);margin-top:4px;">Real Articles</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Limitations -->
+      <div class="glass-card anim-in" style="margin-bottom:20px;border-color:rgba(245,158,11,0.20);">
+        <div class="section-label"
+          style="margin-bottom:16px;background:rgba(245,158,11,0.10);border-color:rgba(245,158,11,0.20);">
+          <div class="section-label-dot" style="background:#F59E0B;"></div>
+          <span class="label-sm" style="color:#F59E0B;">Limitations</span>
+        </div>
+        <h2 class="display-md" style="margin-bottom:12px;">Important Considerations</h2>
+        <ul style="display:flex;flex-direction:column;gap:10px;">
+          <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">
+            <span style="color:#F59E0B;flex-shrink:0;margin-top:1px;">⚠</span>
+            <span><strong style="color:var(--text-primary);">English only.</strong> TruthLens was trained exclusively on
+              English text. Other languages will produce unreliable results.</span>
+          </li>
+          <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">
+            <span style="color:#F59E0B;flex-shrink:0;margin-top:1px;">⚠</span>
+            <span><strong style="color:var(--text-primary);">Not a replacement for journalism.</strong> Machine learning
+              supplements human judgment. Always verify important claims with multiple trusted sources.</span>
+          </li>
+          <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">
+            <span style="color:#F59E0B;flex-shrink:0;margin-top:1px;">⚠</span>
+            <span><strong style="color:var(--text-primary);">Training bias.</strong> The model was trained on political
+              news from a specific time period. Its performance on other topics or newer content may vary.</span>
+          </li>
+          <li style="display:flex;gap:10px;font-size:0.875rem;color:var(--text-secondary);line-height:1.7;">
+            <span style="color:#F59E0B;flex-shrink:0;margin-top:1px;">⚠</span>
+            <span><strong style="color:var(--text-primary);">Short text limitations.</strong> Predictions on very short
+              texts (&lt;50 words) may be significantly less accurate than those on full articles.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- CTA -->
+      <div class="anim-in" style="text-align:center;margin-top:48px;">
+        <p style="color:var(--text-muted);font-size:0.9375rem;margin-bottom:20px;">Ready to try it yourself?</p>
+        <a href="/#detectorSection" class="btn btn-primary btn-lg">
+          Start Detection
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M3 8H13M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="tl-footer" role="contentinfo">
+    <div class="container">
+      <div class="tl-footer-bottom">
+        <span>© 2024 TruthLens — B.Sc. Computer Science Mini Project</span>
+        <span>Built with machine learning &amp; precision</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="tl-toast-wrap" id="toastContainer" aria-live="assertive"></div>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+
+</html>

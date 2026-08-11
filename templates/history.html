@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="TruthLens Analysis History — Browse, search, filter and export all your article verifications." />
+  <title>History — TruthLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>" />
+</head>
+
+<body>
+
+  <div class="page-bg">
+    <div class="bg-orb-1"></div>
+    <div class="bg-orb-2"></div>
+    <div class="bg-orb-3"></div>
+  </div>
+  <div class="page-bg-noise"></div>
+
+  <!-- Navbar -->
+  <nav class="tl-nav" role="navigation">
+    <div class="tl-nav-inner">
+      <a href="/" class="tl-brand">
+        <div class="tl-brand-mark">🔮</div>
+        <span class="tl-brand-name">Truth<span>Lens</span></span>
+      </a>
+      <div class="tl-nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/#detectorSection">Detect</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/history" class="active">History</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="tl-nav-actions">
+        <button class="tl-theme-btn" id="themeToggleBtn" aria-label="Toggle theme">🌙</button>
+        <button class="tl-ham" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="tl-mobile-nav" id="mobileNav">
+    <a href="/">Home</a><a href="/#detectorSection">Detect</a><a href="/dashboard">Dashboard</a><a href="/history"
+      class="active">History</a><a href="/about">About</a><a href="/contact">Contact</a>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header-tl">
+    <div class="container" style="position:relative;z-index:1;text-align:center;">
+      <div class="section-label" style="display:inline-flex;margin-bottom:16px;">
+        <div class="section-label-dot"></div>
+        <span class="label-sm">Analysis Record</span>
+      </div>
+      <h1 class="display-lg">Analysis<br /><span class="gradient-text">History.</span></h1>
+      <p class="subheading" style="margin-top:12px;">
+        <span id="historyTotal" aria-live="polite">—</span> verifications recorded ·
+        <span id="filteredCount" aria-live="polite">—</span> shown
+      </p>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main style="padding:40px 0 80px;">
+    <div class="container">
+
+      <!-- Toolbar -->
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;gap:14px;flex-wrap:wrap;">
+        <!-- Filters -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;" role="group" aria-label="Filter by verdict">
+          <button class="tl-filter-btn active" data-filter="all">All</button>
+          <button class="tl-filter-btn" data-filter="fake" style="color:#F87171;">⚠ Misleading</button>
+          <button class="tl-filter-btn" data-filter="real" style="color:#34D399;">✓ True</button>
+        </div>
+
+        <!-- Actions -->
+        <div style="display:flex;gap:8px;flex-wrap:wrap;">
+          <button id="historyRefreshBtn" class="btn btn-ghost" style="font-size:0.8125rem;padding:9px 16px;">↺
+            Refresh</button>
+          <button id="exportCsvBtn" class="btn btn-ghost" style="font-size:0.8125rem;padding:9px 16px;">↓ Export
+            CSV</button>
+          <button id="clearAllBtn" class="btn btn-danger" style="font-size:0.8125rem;padding:9px 16px;">✕ Clear
+            All</button>
+          <a href="/#detectorSection" class="btn btn-primary" style="font-size:0.875rem;padding:9px 20px;">+ New
+            Analysis</a>
+        </div>
+      </div>
+
+      <!-- Search -->
+      <div class="tl-search-wrap">
+        <span class="tl-search-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+            <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.6" />
+            <path d="M11 11l3 3" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" />
+          </svg>
+        </span>
+        <input type="search" id="searchInput" class="tl-search-input"
+          placeholder="Search by content, verdict, or explanation…" aria-label="Search analysis history" />
+      </div>
+
+      <!-- Loading -->
+      <div id="historyLoading" class="hidden" style="text-align:center;padding:48px;">
+        <div class="tl-spinner" style="margin:0 auto 16px;" role="status" aria-label="Loading history"></div>
+        <p style="color:var(--text-muted);font-size:0.9rem;">Loading history…</p>
+      </div>
+
+      <!-- List -->
+      <div id="historyList" style="display:flex;flex-direction:column;gap:10px;" aria-live="polite"
+        aria-label="Prediction history"></div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="tl-footer" role="contentinfo">
+    <div class="container">
+      <div class="tl-footer-bottom">
+        <span>© 2024 TruthLens — B.Sc. Information Technology and Cybersecurity </span>
+        <span>Built with machine learning &amp; precision</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="tl-toast-wrap" id="toastContainer" aria-live="assertive"></div>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/history.js') }}"></script>
+</body>
+
+</html>

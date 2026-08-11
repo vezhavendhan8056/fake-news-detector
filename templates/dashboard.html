@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description"
+    content="TruthLens Dashboard — Intelligence overview with real-time statistics, charts, and recent analyses." />
+  <title>Dashboard — TruthLens</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+  <link rel="icon"
+    href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔮</text></svg>" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+
+  <div class="page-bg">
+    <div class="bg-orb-1"></div>
+    <div class="bg-orb-2"></div>
+    <div class="bg-orb-3"></div>
+  </div>
+  <div class="page-bg-noise"></div>
+
+  <!-- Navbar -->
+  <nav class="tl-nav" role="navigation">
+    <div class="tl-nav-inner">
+      <a href="/" class="tl-brand">
+        <div class="tl-brand-mark">🔮</div>
+        <span class="tl-brand-name">Truth<span>Lens</span></span>
+      </a>
+      <div class="tl-nav-links" id="navLinks">
+        <a href="/">Home</a>
+        <a href="/#detectorSection">Detect</a>
+        <a href="/dashboard" class="active">Dashboard</a>
+        <a href="/history">History</a>
+        <a href="/about">About</a>
+      </div>
+      <div class="tl-nav-actions">
+        <button class="tl-theme-btn" id="themeToggleBtn" aria-label="Toggle theme">🌙</button>
+        <button class="tl-ham" id="mobileMenuBtn" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="tl-mobile-nav" id="mobileNav">
+    <a href="/">Home</a><a href="/#detectorSection">Detect</a><a href="/dashboard" class="active">Dashboard</a><a
+      href="/history">History</a><a href="/about">About</a><a href="/contact">Contact</a>
+  </div>
+
+  <!-- Page Header -->
+  <div class="page-header-tl">
+    <div class="container" style="position:relative;z-index:1;text-align:center;">
+      <div class="section-label" style="display:inline-flex;margin-bottom:16px;">
+        <div class="section-label-dot"></div>
+        <span class="label-sm">Intelligence Overview</span>
+      </div>
+      <h1 class="display-lg">Your Intelligence<br /><span class="gradient-text">Overview.</span></h1>
+      <p class="subheading" style="margin-top:12px;">Real-time statistics, analytics and recent prediction activity.</p>
+    </div>
+  </div>
+
+  <!-- Main -->
+  <main style="padding:40px 0 80px;">
+    <div class="container">
+
+      <!-- Top Actions -->
+      <div
+        style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:12px;">
+        <h2 class="heading">Overview</h2>
+        <div style="display:flex;gap:10px;">
+          <a href="/#detectorSection" class="btn btn-primary" style="padding:10px 22px;font-size:0.875rem;">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none">
+              <circle cx="7" cy="7" r="5" stroke="currentColor" stroke-width="1.8" />
+              <path d="M11 11l3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+            </svg>
+            New Analysis
+          </a>
+          <button id="refreshBtn" class="btn btn-secondary" style="padding:10px 20px;font-size:0.875rem;">
+            ↺ Refresh
+          </button>
+        </div>
+      </div>
+
+      <!-- Stat Cards -->
+      <div class="dash-stats-grid">
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon violet" aria-hidden="true">📊</div>
+          <div class="dash-stat-value gradient-text" id="statTotal">—</div>
+          <div class="dash-stat-label">Total Analyses</div>
+          <div class="dash-stat-change up">↑ All time</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon red" aria-hidden="true">⚠️</div>
+          <div class="dash-stat-value" id="statFake" style="color:#F87171;">—</div>
+          <div class="dash-stat-label">Potentially Misleading</div>
+          <div class="dash-stat-change down">⚠ Flagged</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon green" aria-hidden="true">✓</div>
+          <div class="dash-stat-value" id="statReal" style="color:#34D399;">—</div>
+          <div class="dash-stat-label">Likely True</div>
+          <div class="dash-stat-change up">✓ Verified</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon violet" aria-hidden="true">🎯</div>
+          <div class="dash-stat-value gradient-text" id="statAccuracy">—</div>
+          <div class="dash-stat-label">Model Accuracy</div>
+          <div class="dash-stat-change up">↑ LR Classifier</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon blue" aria-hidden="true">💯</div>
+          <div class="dash-stat-value" id="statConfidence" style="color:var(--violet-mid);">—</div>
+          <div class="dash-stat-label">Avg Confidence</div>
+        </div>
+        <div class="dash-stat-card">
+          <div class="dash-stat-icon pink" aria-hidden="true">📚</div>
+          <div class="dash-stat-value" id="statTrainSamples" style="color:var(--purple);">—</div>
+          <div class="dash-stat-label">Training Samples</div>
+        </div>
+      </div>
+
+      <!-- Breakdown -->
+      <div class="breakdown-card">
+        <h3 class="heading" style="margin-bottom:20px;">Detection Breakdown</h3>
+        <div style="margin-bottom:16px;">
+          <div
+            style="display:flex;justify-content:space-between;font-size:0.8125rem;color:var(--text-secondary);margin-bottom:6px;">
+            <span>⚠ Potentially Misleading</span>
+            <span id="fakePct" style="color:#F87171;font-weight:700;">—</span>
+          </div>
+          <div class="breakdown-bar-track">
+            <div class="breakdown-bar-fill fake-fill" id="fakeBar" style="width:0%"></div>
+          </div>
+        </div>
+        <div>
+          <div
+            style="display:flex;justify-content:space-between;font-size:0.8125rem;color:var(--text-secondary);margin-bottom:6px;">
+            <span>✓ Likely True</span>
+            <span id="realPct" style="color:#34D399;font-weight:700;">—</span>
+          </div>
+          <div class="breakdown-bar-track">
+            <div class="breakdown-bar-fill real-fill" id="realBar" style="width:0%"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts -->
+      <div class="charts-layout">
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">7-Day Trend</span>
+            <span class="tl-badge violet">Daily</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="lineChart"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">Distribution</span>
+            <span class="tl-badge violet">All Time</span>
+          </div>
+          <div class="chart-container">
+            <canvas id="doughnutChart"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bar Chart -->
+      <div class="chart-card" style="margin-bottom:20px;">
+        <div class="chart-header">
+          <span class="chart-title">Confidence Distribution</span>
+          <span class="tl-badge violet">Recent</span>
+        </div>
+        <div class="chart-container" style="height:200px;">
+          <canvas id="barChart"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Table -->
+      <div class="dash-table-wrap">
+        <div class="dash-table-head">
+          <span class="heading">Recent Analyses</span>
+          <a href="/history" class="btn btn-ghost">View All →</a>
+        </div>
+        <div style="overflow-x:auto;">
+          <table class="dash-table" role="table">
+            <thead>
+              <tr>
+                <th scope="col">Result</th>
+                <th scope="col">Article Preview</th>
+                <th scope="col">Confidence</th>
+                <th scope="col">Speed</th>
+                <th scope="col">Date</th>
+              </tr>
+            </thead>
+            <tbody id="recentTableBody">
+              <tr>
+                <td colspan="5" style="text-align:center;padding:32px;color:var(--text-muted);">Loading…</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="tl-footer" role="contentinfo">
+    <div class="container">
+      <div class="tl-footer-bottom">
+        <span>© 2024 TruthLens — B.Sc. Information Technology and Cybersecurity </span>
+        <span>Built with machine learning &amp; precision</span>
+      </div>
+    </div>
+  </footer>
+
+  <div class="tl-toast-wrap" id="toastContainer" aria-live="assertive"></div>
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+</body>
+
+</html>

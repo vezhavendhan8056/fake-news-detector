@@ -44,7 +44,7 @@ logger = logging.getLogger(__name__)
 # ---------------------------------------------------------------------------
 BASE_DIR        = os.path.dirname(os.path.abspath(__file__))
 MODEL_DIR       = os.path.join(BASE_DIR, "model")
-PREDICTIONS_DIR = os.path.join(BASE_DIR, "saved_predictions")
+PREDICTIONS_DIR = os.path.join("/tmp", "saved_predictions")
 HISTORY_FILE    = os.path.join(PREDICTIONS_DIR, "history.json")
 
 os.makedirs(PREDICTIONS_DIR, exist_ok=True)
